@@ -433,46 +433,4 @@ SELECT product_id, product_name, category_id, total_sold, rnk
 FROM product_rank
 WHERE rnk <= 3
 ORDER BY category_id, rnk;
-
-## CTE - Common Table Expression
-- временная таблица, которую можно использовать как обычную таблицу в последующем запросе
-
-
-
-## Связи между таблицами
-Связи:
-    | Classes               | Type              | Tables                  | Details                  |
-    |:---------------------:|:-----------------:|:-----------------------:|:------------------------:|
-    | User -> Order         | 1-N               | users -> orders         |                          |
-    | User -> UserAddress   | 1-N               | users -> user_address   |                          |
-    | User -> Wishlist      | 1-N               | users -> wishlist       |                          |
-    | User -> Review        | 1-N               | users -> reviews        |                          |
-    | User -> Payment       | 1-N               | users -> payments       |                          |
-    | User -> ShoppingCart  | 1-N               | users -> shopping_cart  |                          |
-    | Category              | parent - child    | parent_cat -> cat_id    | для подкатегорий         |
-    | Product <-> Category  | M-N               | products <-> categories | через m2m таблицу        |
-    |                       |                   |                         |                          |
-    |                       |                   |                         |                          |
-    |                       |                   |                         |                          |
-
-
-
-## Оконная функция - window function 
-- выполняет вычисления над набором строк (окном), связанных с текущей строкой, и возвращают результат для каждой строки.
-
-Оконные функции:
- - SUM()
- - AVG()
- - ROW_NUMBER()
- - RANK
-
-Синтаксис
-```sql
-<агрегат или аналитическая функция> OVER (PARTITION BY <поле1, поле2> ORDER BY <поле>)
 ```
-
- - PARTITION BY — разбивает строки на группы (как GROUP BY), но строки не схлопываются.
-
- - ORDER BY внутри окна — задаёт порядок сортировки внутри каждой группы (нужно для ROW_NUMBER(), RANK() и т.п.).
-
- - OVER() возвращает значение на каждой строке, в отличие от обычного GROUP BY, где одна строка = одна группа.
