@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_sql_shop
+    environment:
+      POSTGRES_USER: glekov
+      POSTGRES_PASSWORD: StrongPass123!
+      POSTGRES_DB: sql_shop
+    ports:
+      - "5433:5432"
+    volumes:
+      - F:/pgdata:/var/lib/postgresql/data
